@@ -4,12 +4,6 @@ class Node:
         self.next = None
         self.prev = None
 
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-        self.prev = None
-
 class doublelinkedlist:
     def __init__(self):
         self.head = None
