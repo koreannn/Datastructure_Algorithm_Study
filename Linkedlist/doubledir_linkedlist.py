@@ -10,7 +10,7 @@ class doublelinkedlist:
         self.tail = None
         
     def print_all(self):
-        if self.head == None:    # haed -> head 오타 수정
+        if self.head == None:    
             print("리스트가 비어있습니다")
             return 
         curr = self.head
@@ -29,7 +29,7 @@ class doublelinkedlist:
     
     def append(self, data):    # 끝에 노드 추가
         new_node = Node(data)
-        if self.head == None:    # 첫 노드 추가
+        if self.head == None:    # 처음일 경우
             self.head = new_node
             self.tail = new_node
         else:
@@ -39,7 +39,7 @@ class doublelinkedlist:
             
     def prepend(self, data):    # 앞에 노드 추가
         new_node = Node(data)
-        if self.head == None:    # 첫 노드 추가
+        if self.head == None:    
             self.head = new_node
             self.tail = new_node
         else:
@@ -55,18 +55,18 @@ class doublelinkedlist:
         if idx < 0:
             return
             
-        if idx == 0:    # 맨 앞 삽입
+        if idx == 0: 
             self.prepend(data)
             return
             
         new_node = Node(data)
         curr = self.head
-        for _ in range(idx-1):    # 삽입 위치 직전까지 이동
-            if curr == None:    # 인덱스가 범위를 벗어난 경우
+        for _ in range(idx-1):    
+            if curr == None:   
                 return
             curr = curr.next
             
-        if curr == None:    # 인덱스가 범위를 벗어난 경우
+        if curr == None:    
             return
             
         if curr.next == None:    # 맨 끝 삽입
