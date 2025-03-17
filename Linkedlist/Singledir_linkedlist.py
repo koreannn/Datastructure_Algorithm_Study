@@ -8,30 +8,21 @@ class LinkedList:
         self.head = None # 첫번째 노드 (첫 번째 노드만 알면 됨)
         self.size = 0 # 노드의 개수
     
-    # 1. 모든 데이터를 출력
-    def print_all(self):
-        if self.head is None:
-            print("연결 리스트가 비어 있습니다.")
+    def print_all(self): # 모든 노드의 데이터 출력
+        if self.head is None: # 가장 마지막 노드의 next값일 경우
             return
         
-        current = self.head 
+        current = self.head
         while current:
             print(current.data, end=" ")
             current = current.next
         print()
     
-    # 2. 모든 데이터를 제거
-    def clear(self):
+    def clear(self): # 모든 데이터 제거
         self.head = None
         self.size = 0
-        print("모든 데이터가 제거되었습니다.")
     
-    # 3. 인덱스 기반으로 값을 삽입한다
-    def insert_at(self, index, data):
-        if index < 0 or index > self.size:
-            print(f"유효하지 않은 인덱스입니다. 현재 크기: {self.size}")
-            return
-        
+    def insert_at(self, index, data):  # 값의 삽입(인덱스 기반)
         new_node = Node(data)
         
         if index == 0:  # 맨 앞에 삽입
@@ -39,22 +30,15 @@ class LinkedList:
             self.head = new_node
         else:
             current = self.head
-            for _ in range(index - 1):
-                current = current.next
+            for _ in range(index - 1): 
+                current = current.next # 특정 인덱스값으로 한방에 접근할 순 없음. head값을 타고 타고 순차적으로 접근해야함
+            # for문 이후 current값: 새로 추가할 노드 이전의 노드 객체
             new_node.next = current.next
             current.next = new_node
-        
         self.size += 1
-        print(f"인덱스 {index}에 {data} 삽입 완료")
     
-    # 4. 인덱스 기반으로 값을 삭제
-    def delete_at(self, index):
-        if self.head is None:
-            print("연결 리스트가 비어 있습니다.")
-            return
-        
-        if index < 0 or index >= self.size:
-            print(f"유효하지 않은 인덱스입니다. 현재 크기: {self.size}")
+    def delete_at(self, index): # 값의 삭제(인덱스 기반)
+        if self.head is None: # 연결리스트에 노드가 아예 없을 경우
             return
         
         if index == 0:  
@@ -68,31 +52,15 @@ class LinkedList:
             current.next = current.next.next
         
         self.size -= 1
-        print(f"인덱스 {index}의 값 {removed_data} 삭제 완료")
         return removed_data
     
-    # 5. 연결리스트 마지막 부분에 값을 삽입
-    def append(self, data):
+    def append(self, data): # 연결리스트의 끝단에 데이터 삽입
         self.insert_at(self.size, data)
     
-    # 6. 연결리스트 마지막 부분에 있는 값을 제거
-    def remove_last(self):
-        if self.size > 0:
+    def remove_last(self): # 연결리스트 맨 마지막 노드 제거
             return self.delete_at(self.size - 1)
-        else:
-            print("연결 리스트가 비어 있습니다.")
-            return None
     
-    # 7. 인덱스를 기반으로 특정 인덱스의 데이터를 읽기
-    def read_at(self, index):
-        if self.head is None:
-            print("연결 리스트가 비어 있습니다.")
-            return None
-        
-        if index < 0 or index >= self.size:
-            print(f"유효하지 않은 인덱스입니다. 현재 크기: {self.size}")
-            return None
-        
+    def read_at(self, index): # 특정 인덱스에 대한 데이터 읽기
         current = self.head
         for _ in range(index):
             current = current.next
