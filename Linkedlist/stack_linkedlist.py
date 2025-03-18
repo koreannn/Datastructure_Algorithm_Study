@@ -1,47 +1,45 @@
-class Node:
-    def __init__(self, data):
-        self.data = 0
-        self.next = None
-
-class Linkedlist:
-    def __init__(self):
-        self.head = None
-        
-    def insert_at(self, index, data): # 연결리스트의 끝단에 데이터 삽입
-        new_node = Node()
-        if index == 0:
-            new_node.next = self.head
-            new_node.data = data
-        
-    def delete_at(self, index): # 값의 삭제(인덱스 기반)
-        
+from singledir_linkedlist import singledirlinkedlist
+from singledir_linkedlist import Node
 
 class Stack:
-    def __init__(self, linked_list):
-        self.linkedlist = linked_list
+    def __init__(self):
+        self.linkedlist = singledirlinkedlist()
     
     def push(self, data):
-        if linked_list.head == None: # 첫 번쨰 데이터일 경우
-            new_node = Node()
-            new_node.data = data
-            self.linkedlist.append(new_node)
+        if self.linkedlist.head == None: # 첫 번쨰 데이터일 경우
+            self.linkedlist.append(data)
         else:
-        
+            self.linkedlist.insert_at(0, data)
         
     def pop(self):
-        self.linkedlist.delete_at(-1)
+        self.linkedlist.delete_at(0)
         
-    def peek():
+    def peek(self):
+        return self.linkedlist.read_at(0)
+        
     
-    def is_empty():
+    def print_all(self):
+        self.linkedlist.print_all()
         
+    def is_empty(self):
+        return not self.linkedlist.head # 없으면 True반환
 
 if __name__ == "__main__":
-    linked_list = Linkedlist()
-    stack = Stack(linked_list)
+    stack = Stack()
     
     stack.push(1)
     stack.push(2)
     stack.push(3)
+    stack.print_all()
+    print(stack.is_empty())
     
+    stack.pop()
+    stack.print_all()
+    stack.pop()
+    stack.print_all()
+    stack.pop()
+    stack.print_all()
+    print(stack.is_empty())
     
+    stack.push(4)
+    print(stack.peek())

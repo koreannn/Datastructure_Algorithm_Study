@@ -3,7 +3,7 @@ class Node:
         self.data = data
         self.next = None
 
-class LinkedList:
+class singledirlinkedlist:
     def __init__(self):
         self.head = None # 첫번째 노드 (첫 번째 노드만 알면 됨)
         self.size = 0 # 노드의 개수
@@ -23,11 +23,17 @@ class LinkedList:
         self.size = 0
     
     def insert_at(self, index, data):  # 값의 삽입(인덱스 기반)
+        if index < 0 or index > self.size:
+            return
+        
         new_node = Node(data)
         
         if index == 0:  # 맨 앞에 삽입
-            new_node.next = self.head
+            curr = self.head
             self.head = new_node
+            self.head.next = curr
+            return
+        
         else:
             current = self.head
             for _ in range(index - 1): 
@@ -61,6 +67,9 @@ class LinkedList:
             return self.delete_at(self.size - 1)
     
     def read_at(self, index): # 특정 인덱스에 대한 데이터 읽기
+        if self.head is None or index < 0 or index >= self.size:
+            return None
+        
         current = self.head
         for _ in range(index):
             current = current.next
@@ -69,7 +78,7 @@ class LinkedList:
 
 # 테스트 코드
 if __name__ == "__main__":
-    linked_list = LinkedList()
+    linked_list = singledirlinkedlist()
     
     linked_list.append(1)
     linked_list.append(2)
@@ -82,7 +91,7 @@ if __name__ == "__main__":
     print("인덱스 1 위치에 5 삽입 후:")
     linked_list.print_all()
     
-    print(f"인덱스 2의 데이터: {linked_list.get_at(2)}")
+    print(f"인덱스 2의 데이터: {linked_list.read_at(2)}")
     
     linked_list.remove_last()
     print("마지막 데이터 제거 후:")
