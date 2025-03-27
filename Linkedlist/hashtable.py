@@ -56,4 +56,3 @@ if __name__ == "__main__":
     print(f"1: {hash_table.get(1)}") # None
     print(f"21: {hash_table.get(21)}")
         
-        
