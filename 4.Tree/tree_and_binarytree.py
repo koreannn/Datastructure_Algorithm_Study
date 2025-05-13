@@ -43,11 +43,22 @@ class BinaryTree:
         self.postOrderTraversal(tree.getLeftSubTree())
         self.postOrderTraversal(tree.getRightSubTree())
         print(tree.data)
-### test
+        
+    
+    # 이진 탐색 트리의 데이터 제거를 위한 추가 함수 구현
+    def removeLeftSubTree(self):
+        removed_tree = self.getLeftSubTree()
+        self.setLeftSubTree(None)
+        return removed_tree
+        
+    def removeRightSubTree(self):
+        removed_tree = self.getRightSubTree()
+        self.setRightSubTree(None)
+        return removed_tree
 
-'''
-1. 포화 이진 트리 만들기
-'''
+
+"""Test"""
+# 1. 포화 이진 트리 만들기
 tree1 = BinaryTree(1)
 tree2 = BinaryTree(2)
 tree3 = BinaryTree(3)
