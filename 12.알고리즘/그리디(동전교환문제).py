@@ -2,6 +2,9 @@ class Coin():
     def __init__(self, unit):
         self.unit = unit # 거스름돈 단위
         self.count = 0
+        
+    def __str__(self):
+        return f"{self.unit}원 / {self.count}개"
 
 def ChageCoin(money: int):
     print(f"{money}원 거슬러주기")
@@ -18,7 +21,7 @@ def ChageCoin(money: int):
             money -= coins[i].unit
             
     for i in range(len(coins)):
-        print(f"{coins[i].unit}원 {coins[i].count}개")
+        print(coins[i])
 
 ChageCoin(2300)
     
