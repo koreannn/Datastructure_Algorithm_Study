@@ -3,6 +3,7 @@ class BinaryTree:
         self.data = data
         self.LeftTree = LeftTree
         self.RightTree = RightTree
+        self.height = 1
     
     def getData(self):
         return self.data
