@@ -41,9 +41,10 @@ class Dijkstra:
             for nbr_name, weight in curr_city.adjacent_cities.items():
                 if nbr_name in visited:
                     continue
-                alt = dist[curr] + weight
-                if alt < dist[nbr_name]:
-                    dist[nbr_name] = alt
+                
+                alt_dist = dist[curr] + weight
+                if alt_dist < dist[nbr_name]:
+                    dist[nbr_name] = alt_dist
                     prev[nbr_name] = curr
         
         if dist[end.name] == math.inf:
@@ -94,4 +95,4 @@ for a, b, w in edges:
     b.add_adjacent_city(a, w)
 
 # compute and print shortest path
-dj.shortest_path(seoul, daegu)
+dj.shortest_path(seoul, daegu) # 서울부터 대구까지의 최단 경로 및 거리 출력

@@ -10,12 +10,12 @@ class WeightedGraphVertex:
         self.adjacent_vertices.pop(vertex.value, None)
         
 # 정점 생성
-seoul    = WeightedGraphVertex("서울")
-wonju    = WeightedGraphVertex("원주")
+seoul = WeightedGraphVertex("서울")
+wonju = WeightedGraphVertex("원주")
 gangneung = WeightedGraphVertex("강릉")
-daejeon  = WeightedGraphVertex("대전")
-jeonju   = WeightedGraphVertex("전주")
-daegu    = WeightedGraphVertex("대구")
+daejeon = WeightedGraphVertex("대전")
+jeonju = WeightedGraphVertex("전주")
+daegu = WeightedGraphVertex("대구")
 
 # 간선 추가
 seoul.add_adjacent_vertex(wonju, 87)
